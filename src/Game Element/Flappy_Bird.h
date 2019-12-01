@@ -1,6 +1,7 @@
 #ifndef FLAPPY_BIRD_H
 #define FLAPPY_BIRD_H
 #include "raylib.h"
+#include "Game Objects/Player.h"
 enum GameStage
 {
 	MENU,GAME
@@ -13,6 +14,7 @@ public:
 	void Play();
 private:
 	bool inGame;
+	Player* player;
 	GameStage gameStatus;
 	void update();
 	void draw();

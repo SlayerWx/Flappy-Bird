@@ -18,10 +18,16 @@
     <ClCompile Include="..\src\Game Element\Flappy_Bird.cpp">
       <Filter>src\Game Element</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Game Objects\Player.cpp">
+      <Filter>src\Game Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Game Element\Flappy_Bird.h">
       <Filter>src\Game Element</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Game Objects\Player.h">
+      <Filter>src\Game Object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

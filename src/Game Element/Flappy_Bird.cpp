@@ -1,9 +1,11 @@
 #include "Flappy_Bird.h"
+#include "Game Objects/Player.h"
 Flappy_Bird::Flappy_Bird()
 {
 	InitWindow(800, 400, "Flappy Bird");
 	inGame = true;
 	gameStatus = GAME;
+	player = new Player();
 }
 Flappy_Bird::~Flappy_Bird()
 {
@@ -36,10 +38,10 @@ void Flappy_Bird::draw()
 	switch (gameStatus)
 	{
 	case MENU:
-		updateMenu();
+		drawMenu();
 		break;
 	case GAME:
-		updateGame();
+		drawGame();
 		break;
 	}
 	EndDrawing();
@@ -55,10 +57,12 @@ void Flappy_Bird::drawMenu()
 
 void Flappy_Bird::updateGame()
 {
+	player->input();
+	player->move();
 }
-
 void Flappy_Bird::drawGame()
 {
+	player->drawMe();
 }
 
 void Flappy_Bird::updateOptions()
