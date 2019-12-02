@@ -10,6 +10,10 @@ enum GameStage
 {
 	MENU, GAME, SCORE
 };
+enum MenuState
+{
+	PLAY,EXIT
+};
 static const int cantPipeline = 10;
 class Flappy_Bird
 {
@@ -23,18 +27,29 @@ private:
 	Pipeline* pipe[cantPipeline];
 	Sky* background;
 	GameStage gameStatus;
-	Texture2D birdSkin;
 	Texture2D skinBackGround1;
 	Texture2D skinBackGround2;
-	Texture2D skinPipeline;
+	Texture2D birdSkin;
 	const float birdHeight = 30.0f;
 	const float birdWidth = 30.0f;
+	Texture2D skinPipeline;
 	const float distanceBetweenPipes = 150.0f;
 	const int pipelineWidth = 30;
+	Texture2D titleTexture;
+	Texture2D playTexture;
+	Texture2D exitTexture;
+	const int distanceTitleTopY = 5;
+	const int distanceMenuLeftX = 7;
+	const int distanceMenuToMenu = 4;
+	const int distanceTitleBackY = 8;
+	const float sizeDecrease = 1.5f;
+	Color playColor;
+	Color exitColor;
 	static const float drawnCorrectionWidth;
 	static const float drawnCorrectionHeight;
 	static const int screenHeight;
 	static const int screenWidth;
+	MenuState myState;
 	void update();
 	void draw();
 
@@ -42,6 +57,7 @@ private:
 	void initMenu();
 	void updateMenu();
 	void drawMenu();
+	void resetColorMenu();
 
 	bool gameInited;
 	void initGame();

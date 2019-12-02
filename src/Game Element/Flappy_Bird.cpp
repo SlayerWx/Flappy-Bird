@@ -17,6 +17,13 @@ Flappy_Bird::Flappy_Bird()
 	InitWindow(800, 400, "Flappy Bird");
 	inGame = true;
 	gameStatus = MENU;
+	titleTexture = LoadTexture("assets/coolText/Title.png");
+	playTexture = LoadTexture("assets/coolText/Play.png");
+	playTexture.width = static_cast<int>(playTexture.width / sizeDecrease);
+	playTexture.height = static_cast<int>(playTexture.height / sizeDecrease);
+	exitTexture = LoadTexture("assets/coolText/Exit.png");
+	exitTexture.width = static_cast<int>(exitTexture.width / sizeDecrease);
+	exitTexture.height = static_cast<int>(exitTexture.height / sizeDecrease);
 	birdSkin = LoadTexture("assets/Kenney.nl/PNG/Planes/planeRed1.png");
 	birdSkin.height = static_cast<int>(birdHeight+ drawnCorrectionHeight);
 	birdSkin.width = static_cast<int>(birdWidth+ drawnCorrectionWidth);
@@ -37,6 +44,9 @@ Flappy_Bird::Flappy_Bird()
 	menuInited = false;
 	gameInited = false;
 	scoreInited = false;
+	myState = PLAY;
+	playColor = WHITE;
+	exitColor = GRAY;
 }
 Flappy_Bird::~Flappy_Bird()
 {
@@ -50,7 +60,7 @@ Flappy_Bird::~Flappy_Bird()
 }
 void Flappy_Bird::Play()
 {
-	while (inGame && !WindowShouldClose())
+	while (inGame)
 	{
 		update();
 		draw();
@@ -105,9 +115,46 @@ void Flappy_Bird::updateMenu()
 {
 	if (menuInited)
 	{
-		if (IsKeyReleased(KEY_ENTER))
+		switch (myState)
 		{
-			gameStatus = GAME;
+		case PLAY:
+			playColor = WHITE;
+			exitColor = GRAY;
+			if (IsKeyReleased(KEY_ENTER))
+			{
+				gameStatus = GAME;
+			}
+			if (IsKeyReleased(KEY_UP))
+			{
+				myState = EXIT;
+				resetColorMenu();
+				exitColor = WHITE;
+			}
+			if (IsKeyReleased(KEY_DOWN))
+			{
+				myState = EXIT;
+				resetColorMenu();
+				exitColor = WHITE;
+			}
+			break;
+		case EXIT:
+			if (IsKeyReleased(KEY_ENTER))
+			{
+				inGame = false;
+			}
+			if (IsKeyReleased(KEY_UP))
+			{
+				myState = PLAY;
+				resetColorMenu();
+				playColor = WHITE;
+			}
+			if (IsKeyReleased(KEY_DOWN))
+			{
+				myState = PLAY;
+				resetColorMenu();
+				playColor = WHITE;
+			}
+			break;
 		}
 	}
 }
@@ -115,7 +162,20 @@ void Flappy_Bird::drawMenu()
 {
 	if (menuInited)
 	{
+		DrawTexture(titleTexture,static_cast<int>((GetScreenWidth()/2) - (titleTexture.width/2)),
+			distanceTitleTopY,WHITE);
+		int aux = static_cast<int>((GetScreenHeight() - distanceTitleBackY - exitTexture.height ));
+		DrawTexture(exitTexture, distanceMenuLeftX,
+			aux, exitColor);
+		aux -= distanceMenuToMenu + playTexture.height;
+		DrawTexture(playTexture, distanceMenuLeftX ,
+			aux, playColor);
 	}
+}
+void Flappy_Bird::resetColorMenu()
+{
+	playColor = GRAY;
+	exitColor = GRAY;
 }
 void Flappy_Bird::initGame()
 {
