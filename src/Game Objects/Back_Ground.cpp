@@ -15,11 +15,11 @@ void BackGround::move()
 {
 	if (static_cast<int>(myPosition1.x) + mySkin.width < 0)
 	{
-		myPosition1.x = static_cast<float>(GetScreenWidth());
+		myPosition1.x = myPosition2.x + mySkin.width;
 	}
 	if (static_cast<int>(myPosition2.x) + mySkin.width < 0)
 	{
-		myPosition2.x = static_cast<float>(GetScreenWidth());
+		myPosition2.x = myPosition1.x + mySkin.width;
 	}
 	myPosition1.x -= mySpeed * GetFrameTime();
 	myPosition2.x -= mySpeed * GetFrameTime();
