@@ -2,15 +2,17 @@
 #include "raylib.h"
 const float Player::maxFlappingTime = 0.6f;
 const float Player::gravity = 170.0f;
-Player::Player()
+const float Player::drawnCorrection = 8.0f;
+Player::Player(Texture2D myNewSkin,float birdHeight,float birdWidth)
 {
-	myBody.height = 30.0f;
-	myBody.width = 30.0f;
+	myBody.height = birdHeight;
+	myBody.width = birdWidth;
 	myBody.x = 50.0f;
-	myBody.y = 0.0f;
+	myBody.y = static_cast<float>(GetScreenHeight()/2);
 	flappingTime = 0.0f;
 	speed = 160.0f;
-	myState = FALLING;
+	myState = STAY;
+	mySkin = myNewSkin;
 }
 Player::~Player()
 {
@@ -30,9 +32,12 @@ void Player::move()
 }
 void Player::drawMe()
 {
+#if DEBUG
 	DrawRectangle(static_cast<int>(myBody.x), static_cast<int>(myBody.y), 
 		static_cast<int>(myBody.width), 
 		static_cast<int>(myBody.height), YELLOW);
+#endif
+	DrawTexture(mySkin, static_cast<int>(myBody.x - drawnCorrection), static_cast<int>(myBody.y), WHITE);
 }
 void Player::setPosition(Vector2 myNewPosition)
 {

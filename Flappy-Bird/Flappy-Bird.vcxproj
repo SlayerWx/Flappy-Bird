@@ -20,12 +20,20 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Game Element\Flappy_Bird.cpp" />
+    <ClCompile Include="..\src\Game Element\Sky.cpp" />
+    <ClCompile Include="..\src\Game Objects\Back_Ground.cpp" />
     <ClCompile Include="..\src\Game Objects\Player.cpp" />
     <ClCompile Include="..\src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Game Element\Flappy_Bird.h" />
+    <ClInclude Include="..\src\Game Element\Sky.h" />
+    <ClInclude Include="..\src\Game Objects\Back_Ground.h" />
     <ClInclude Include="..\src\Game Objects\Player.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\resource\assets\Kenney.nl\PNG\Planes\planeRed1.png" />
+    <Image Include="..\resource\assets\sky1Background-1.png" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

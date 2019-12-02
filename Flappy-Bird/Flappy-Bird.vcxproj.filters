@@ -10,6 +10,18 @@
     <Filter Include="src\Game Object">
       <UniqueIdentifier>{6b762107-a9a3-41be-8c0c-e6f780d836e4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{78e5454a-7be8-4a4c-9cc1-49c79b9a336b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\assets">
+      <UniqueIdentifier>{b8e00ff6-70df-42ce-a418-30a7d61aa765}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\assets\Kenney.nl">
+      <UniqueIdentifier>{16bb514c-b7e4-4fe1-8cd8-23eae1e11001}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource\assets\Kenney.nl\PNG">
+      <UniqueIdentifier>{e1395aad-1c28-47be-aa6e-9fa0e8ba1ce9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -21,6 +33,12 @@
     <ClCompile Include="..\src\Game Objects\Player.cpp">
       <Filter>src\Game Object</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Game Element\Sky.cpp">
+      <Filter>src\Game Element</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Game Objects\Back_Ground.cpp">
+      <Filter>src\Game Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Game Element\Flappy_Bird.h">
@@ -29,5 +47,19 @@
     <ClInclude Include="..\src\Game Objects\Player.h">
       <Filter>src\Game Object</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Game Element\Sky.h">
+      <Filter>src\Game Element</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Game Objects\Back_Ground.h">
+      <Filter>src\Game Object</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\resource\assets\sky1Background-1.png">
+      <Filter>resource\assets</Filter>
+    </Image>
+    <Image Include="..\resource\assets\Kenney.nl\PNG\Planes\planeRed1.png">
+      <Filter>resource\assets\Kenney.nl\PNG</Filter>
+    </Image>
   </ItemGroup>
 </Project>
