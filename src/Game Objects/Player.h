@@ -17,6 +17,10 @@ public:
 	Vector2 getPosition();
 	BirdState getBirdState();
 	void setBirdState(BirdState myNewState);
+	Rectangle getPlayerCollider();
+	void reset();
+	void increasePoints();
+	int getPoints();
 private:
 	Rectangle myBody;
 	Texture2D mySkin;
@@ -28,5 +32,6 @@ private:
 	static const float drawnCorrection;
 	void flapping();
 	void falling();
+	int points;
 };
 #endif

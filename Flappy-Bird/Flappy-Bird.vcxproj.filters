@@ -22,6 +22,9 @@
     <Filter Include="resource\assets\Kenney.nl\PNG">
       <UniqueIdentifier>{e1395aad-1c28-47be-aa6e-9fa0e8ba1ce9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="resource\assets\CoolText">
+      <UniqueIdentifier>{297c3f4b-bacc-4b92-8a00-376e720e4985}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -39,6 +42,9 @@
     <ClCompile Include="..\src\Game Objects\Back_Ground.cpp">
       <Filter>src\Game Object</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\Game Objects\pipeline.cpp">
+      <Filter>src\Game Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Game Element\Flappy_Bird.h">
@@ -53,6 +59,9 @@
     <ClInclude Include="..\src\Game Objects\Back_Ground.h">
       <Filter>src\Game Object</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\Game Objects\Pipeline.h">
+      <Filter>src\Game Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\resource\assets\sky1Background-1.png">
@@ -60,6 +69,18 @@
     </Image>
     <Image Include="..\resource\assets\Kenney.nl\PNG\Planes\planeRed1.png">
       <Filter>resource\assets\Kenney.nl\PNG</Filter>
+    </Image>
+    <Image Include="..\resource\assets\sky2Background.png">
+      <Filter>resource\assets</Filter>
+    </Image>
+    <Image Include="..\resource\assets\coolText\Exit.png">
+      <Filter>resource\assets\CoolText</Filter>
+    </Image>
+    <Image Include="..\resource\assets\coolText\Play.png">
+      <Filter>resource\assets\CoolText</Filter>
+    </Image>
+    <Image Include="..\resource\assets\coolText\Title.png">
+      <Filter>resource\assets\CoolText</Filter>
     </Image>
   </ItemGroup>
 </Project>

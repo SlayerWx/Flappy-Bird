@@ -3,8 +3,8 @@
 #include "raylib.h"
 #include "Game Objects/Back_Ground.h"
 static const int backgroundLayers = 2;
-static const float background1Speed = 9.0f;
-static const float background2Speed = 12.0f;
+static const float background1Speed = 90.0f;
+static const float background2Speed = 140.0f;
 class Sky
 {
 public:
