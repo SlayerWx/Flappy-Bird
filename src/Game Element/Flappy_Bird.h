@@ -8,11 +8,11 @@
 #include "Game Objects/Pipeline.h"
 enum GameStage
 {
-	MENU, GAME, SCORE
+	MENU, GAME,CREDITS_SCREEN, SCORE
 };
 enum MenuState
 {
-	PLAY,EXIT
+	PLAY,CREDITS,EXIT
 };
 static const int cantPipeline = 10;
 class Flappy_Bird
@@ -37,7 +37,9 @@ private:
 	const int pipelineWidth = 30;
 	Texture2D titleTexture;
 	Texture2D playTexture;
+	Texture2D creditsTexture;
 	Texture2D exitTexture;
+	Texture2D creditsScreenTexture;
 	const int distanceTitleTopY = 5;
 	const int distanceMenuLeftX = 7;
 	const int distanceMenuToMenu = 4;
@@ -45,6 +47,7 @@ private:
 	const float sizeDecrease = 1.5f;
 	Color playColor;
 	Color exitColor;
+	Color creditsColor;
 	static const float drawnCorrectionWidth;
 	static const float drawnCorrectionHeight;
 	static const int screenHeight;

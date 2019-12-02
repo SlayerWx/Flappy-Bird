@@ -24,6 +24,12 @@ Flappy_Bird::Flappy_Bird()
 	exitTexture = LoadTexture("assets/coolText/Exit.png");
 	exitTexture.width = static_cast<int>(exitTexture.width / sizeDecrease);
 	exitTexture.height = static_cast<int>(exitTexture.height / sizeDecrease);
+	creditsTexture = LoadTexture("assets/coolText/Credits.png");
+	creditsTexture.width = static_cast<int>(creditsTexture.width / sizeDecrease);
+	creditsTexture.height = static_cast<int>(creditsTexture.height / sizeDecrease);
+	creditsScreenTexture = LoadTexture("assets/CreditsScreen.png");
+	creditsScreenTexture.width = GetScreenWidth();
+	creditsScreenTexture.height = GetScreenHeight();
 	birdSkin = LoadTexture("assets/Kenney.nl/PNG/Planes/planeRed1.png");
 	birdSkin.height = static_cast<int>(birdHeight+ drawnCorrectionHeight);
 	birdSkin.width = static_cast<int>(birdWidth+ drawnCorrectionWidth);
@@ -47,6 +53,7 @@ Flappy_Bird::Flappy_Bird()
 	myState = PLAY;
 	playColor = WHITE;
 	exitColor = GRAY;
+	creditsColor = GRAY;
 }
 Flappy_Bird::~Flappy_Bird()
 {
@@ -78,6 +85,9 @@ void Flappy_Bird::update()
 		initGame();
 		updateGame();
 		break;
+	case CREDITS_SCREEN:
+		updateCredits();
+		break;
 	case SCORE:
 		initScore();
 		updateScore();
@@ -95,6 +105,9 @@ void Flappy_Bird::draw()
 		break;
 	case GAME:
 		drawGame();
+		break;
+	case CREDITS_SCREEN:
+		drawCredits();
 		break;
 	case SCORE:
 		drawScore();
@@ -118,8 +131,6 @@ void Flappy_Bird::updateMenu()
 		switch (myState)
 		{
 		case PLAY:
-			playColor = WHITE;
-			exitColor = GRAY;
 			if (IsKeyReleased(KEY_ENTER))
 			{
 				gameStatus = GAME;
@@ -132,11 +143,29 @@ void Flappy_Bird::updateMenu()
 			}
 			if (IsKeyReleased(KEY_DOWN))
 			{
+				myState = CREDITS;
+				resetColorMenu();
+				creditsColor = WHITE;
+			}
+			break;
+		case CREDITS:
+			if (IsKeyReleased(KEY_ENTER))
+			{
+				gameStatus = CREDITS_SCREEN;
+			}
+			if (IsKeyReleased(KEY_UP))
+			{
+				myState = PLAY;
+				resetColorMenu();
+				playColor = WHITE;
+			}
+			if (IsKeyReleased(KEY_DOWN))
+			{
 				myState = EXIT;
 				resetColorMenu();
 				exitColor = WHITE;
 			}
-			break;
+			break;	
 		case EXIT:
 			if (IsKeyReleased(KEY_ENTER))
 			{
@@ -144,9 +173,9 @@ void Flappy_Bird::updateMenu()
 			}
 			if (IsKeyReleased(KEY_UP))
 			{
-				myState = PLAY;
+				myState = CREDITS;
 				resetColorMenu();
-				playColor = WHITE;
+				creditsColor = WHITE;
 			}
 			if (IsKeyReleased(KEY_DOWN))
 			{
@@ -162,11 +191,16 @@ void Flappy_Bird::drawMenu()
 {
 	if (menuInited)
 	{
+		DrawTexture(skinBackGround1, 0, 0, WHITE);
+		DrawTexture(skinBackGround2, 0, 0, WHITE);
 		DrawTexture(titleTexture,static_cast<int>((GetScreenWidth()/2) - (titleTexture.width/2)),
 			distanceTitleTopY,WHITE);
 		int aux = static_cast<int>((GetScreenHeight() - distanceTitleBackY - exitTexture.height ));
 		DrawTexture(exitTexture, distanceMenuLeftX,
 			aux, exitColor);
+		aux -= distanceMenuToMenu + creditsTexture.height;
+		DrawTexture(creditsTexture, distanceMenuLeftX,
+			aux, creditsColor);
 		aux -= distanceMenuToMenu + playTexture.height;
 		DrawTexture(playTexture, distanceMenuLeftX ,
 			aux, playColor);
@@ -176,6 +210,7 @@ void Flappy_Bird::resetColorMenu()
 {
 	playColor = GRAY;
 	exitColor = GRAY;
+	creditsColor = GRAY;
 }
 void Flappy_Bird::initGame()
 {
@@ -249,9 +284,16 @@ void Flappy_Bird::drawOptions()
 }
 void Flappy_Bird::updateCredits()
 {
+	if (IsKeyReleased(KEY_ENTER))
+	{
+		gameStatus = MENU;
+	}
 }
 void Flappy_Bird::drawCredits()
 {
+	DrawTexture(skinBackGround1, 0, 0, WHITE);
+	DrawTexture(skinBackGround2, 0, 0, WHITE);
+	DrawTexture(creditsScreenTexture, 0, 0, BLACK);
 }
 void Flappy_Bird::initScore()
 {
