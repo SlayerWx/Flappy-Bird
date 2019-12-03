@@ -45,6 +45,14 @@
     <Image Include="..\resource\assets\sky1Background.png" />
     <Image Include="..\resource\assets\sky2Background.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\resource\assets\sound\LossSong.wav" />
+    <Media Include="..\resource\assets\sound\menuSelector.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\resource\assets\sound\menu.ogg" />
+    <None Include="..\resource\assets\sound\musicGameplay.ogg" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{F586F3F9-BEFC-4046-8811-D416B15D85A1}</ProjectGuid>
