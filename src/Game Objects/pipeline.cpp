@@ -23,8 +23,11 @@ Pipeline::~Pipeline()
 
 void Pipeline::update(Rectangle player)
 {
-	move();
-	collision(player);
+	if (!Player::pause)
+	{
+		move();
+		collision(player);
+	}
 }
 
 void Pipeline::drawMe()

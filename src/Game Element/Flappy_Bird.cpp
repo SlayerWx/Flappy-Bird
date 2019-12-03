@@ -273,7 +273,10 @@ void Flappy_Bird::updateGame()
 		if (!Pipeline::playerCollision)
 		{
 			UpdateMusicStream(gameplayMusic);
-			background->update();
+			if (!Player::pause)
+			{
+				background->update();
+			}
 			player->input();
 			player->move();
 			for (int i = 0; i < cantPipeline; i++)
@@ -338,6 +341,11 @@ void Flappy_Bird::updateOptions()
 			volume = 0.000f;
 		}
 		SetMasterVolume(volume);
+	}
+	if (IsKeyReleased(KEY_BACKSPACE))
+	{
+		cout << "enter" << endl;
+		gameStatus = MENU;
 	}
 }
 void Flappy_Bird::updateCredits()

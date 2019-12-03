@@ -17,6 +17,7 @@ public:
 	Vector2 getPosition();
 	BirdState getBirdState();
 	void setBirdState(BirdState myNewState);
+	static bool pause;
 	Rectangle getPlayerCollider();
 	void reset();
 	void increasePoints();

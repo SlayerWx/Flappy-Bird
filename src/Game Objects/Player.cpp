@@ -3,6 +3,7 @@
 const float Player::maxFlappingTime = 0.4f;
 const float Player::gravity = 130.0f;
 const float Player::drawnCorrection = 8.0f;
+bool Player::pause = false;
 Player::Player(Texture2D myNewSkin,float birdHeight,float birdWidth)
 {
 	myBody.height = birdHeight;
@@ -17,16 +18,23 @@ Player::~Player()
 }
 void Player::input()
 {
-	if (IsKeyReleased(KEY_SPACE))
+	if (IsKeyReleased(KEY_SPACE) && !pause)
 	{
 		flappingTime = 0.0f;
 		myState = FLAPPING;
 	}
+	if (IsKeyReleased(KEY_ENTER))
+	{
+		pause = !pause;
+	}
 }
 void Player::move()
 {
-	flapping();
-	falling();
+	if (!pause)
+	{
+		flapping();
+		falling();
+	}
 }
 void Player::drawMe()
 {
@@ -60,6 +68,7 @@ Rectangle Player::getPlayerCollider()
 }
 void Player::reset()
 {
+	pause = false;
 	flappingTime = 0.0f;
 	myState = STAY;
 	myBody.y = static_cast<float>(GetScreenHeight() / 2);
