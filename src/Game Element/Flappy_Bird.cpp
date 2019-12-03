@@ -15,7 +15,7 @@ const float Flappy_Bird::modifyVolume = 0.1f;
 Flappy_Bird::Flappy_Bird()
 {
 	srand(unsigned(NULL));
-	InitWindow(screenWidth, screenHeight, "Flappy Bird");
+	InitWindow(screenWidth, screenHeight, "Flappy Bird V2.0");
 	InitAudioDevice();
 	myMusicMenu = LoadMusicStream("assets/sound/Menu.ogg");
 	mySoundMenu = LoadSound("assets/sound/menuSelector.wav");
