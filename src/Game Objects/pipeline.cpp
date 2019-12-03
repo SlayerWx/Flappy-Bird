@@ -2,6 +2,8 @@
 #include <ctime>
 #include <cstdlib>
 #include "Game Objects/Player.h"
+namespace FlappyBird
+{
 bool Pipeline::playerCollision = false;
 Pipeline::Pipeline(Texture2D skin,float speed,float distance, float minDistance)
 {
@@ -105,4 +107,5 @@ void Pipeline::init()
 	myCollider1.x = static_cast<float>(GetScreenWidth()) + myDistanceReset;
 	myCollider2.x = static_cast<float>(GetScreenWidth()) + myDistanceReset;
 	playerCollision = false;
+}
 }

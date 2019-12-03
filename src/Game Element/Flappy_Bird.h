@@ -2,10 +2,14 @@
 #define FLAPPY_BIRD_H
 #include <ctime>
 #include <cstdlib>
+#include <iostream>
 #include "raylib.h"
 #include "Game Objects/Player.h"
 #include "Game Element/Sky.h"
 #include "Game Objects/Pipeline.h"
+using namespace std;
+namespace FlappyBird
+{
 enum GameStage
 {
 	MENU, GAME,CREDITS_SCREEN, SCORE
@@ -86,4 +90,5 @@ private:
 	void updateScore();
 	void drawScore();
 };
+}
 #endif

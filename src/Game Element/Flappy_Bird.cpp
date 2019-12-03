@@ -7,6 +7,8 @@
 #include "Game Element/Sky.h"
 #include "Game Objects/Pipeline.h"
 using namespace std;
+namespace FlappyBird
+{
 const float Flappy_Bird::drawnCorrectionWidth = 12.0f;
 const float Flappy_Bird::drawnCorrectionHeight = 3.0f;
 const int Flappy_Bird::screenHeight = 600;
@@ -390,4 +392,5 @@ void Flappy_Bird::drawScore()
 		DrawTexture(exitTexture, (GetScreenWidth() / 2) - correctionFontPosition * 2,
 			static_cast<int>((GetScreenHeight() - distanceTitleBackY * 2 - exitTexture.height)), WHITE);
 	}
+}
 }

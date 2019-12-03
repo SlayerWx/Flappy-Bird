@@ -1,4 +1,6 @@
 #include "Sky.h"
+namespace FlappyBird
+{
 Sky::Sky(Texture2D newBackground1,Texture2D newBackground2)
 {
 	for (int i = 0; i < backgroundLayers; i++)
@@ -32,4 +34,5 @@ void Sky::parallax()
 	{
 		backGround[i]->move();
 	}
+}
 }

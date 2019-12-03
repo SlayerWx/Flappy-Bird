@@ -1,6 +1,8 @@
 #ifndef BACK_GROUND_H
 #define BACK_GROUND_H
 #include "raylib.h"
+namespace FlappyBird
+{
 class BackGround
 {
 public:
@@ -18,4 +20,5 @@ private:
 	Vector2 myPosition2;
 	float mySpeed;
 };
+}
 #endif

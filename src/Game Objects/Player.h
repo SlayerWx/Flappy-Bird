@@ -1,6 +1,8 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "raylib.h"
+namespace FlappyBird
+{
 enum BirdState
 {
 	STAY,FLAPPING,FALLING
@@ -35,4 +37,5 @@ private:
 	void falling();
 	int points;
 };
+}
 #endif

@@ -1,5 +1,7 @@
 #include "Player.h"
 #include "raylib.h"
+namespace FlappyBird
+{
 const float Player::maxFlappingTime = 0.4f;
 const float Player::gravity = 130.0f;
 const float Player::drawnCorrection = 8.0f;
@@ -104,6 +106,7 @@ void Player::falling()
 {
 	if (myState == FALLING && myBody.y < GetScreenHeight() - myBody.height)
 	{
-		setPosition({ myBody.x,myBody.y+= gravity * GetFrameTime()});
+		setPosition({ myBody.x,myBody.y += gravity * GetFrameTime() });
 	}
+}
 }

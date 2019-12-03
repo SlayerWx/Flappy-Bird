@@ -1,4 +1,6 @@
 #include "Back_Ground.h"
+namespace FlappyBird
+{
 BackGround::BackGround(Texture2D myNewSkin, Vector2 myNewPosition, float speed)
 {
 	mySkin = myNewSkin;
@@ -48,4 +50,5 @@ void BackGround::setPosition2(Vector2 newPosition)
 Vector2 BackGround::getPosition2()
 {
 	return myPosition2;
+}
 }

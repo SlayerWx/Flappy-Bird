@@ -4,6 +4,8 @@
 #include <cstdlib>
 #include "raylib.h"
 #include "Game Objects/Player.h"
+namespace FlappyBird
+{
 static const int minDistanceBetweenPipes = 90;
 static const int maxDistanceBetweenPipes = 180;
 static const int minPosY = 30;
@@ -11,7 +13,7 @@ static const int maxPosY = 180;
 class Pipeline
 {
 public:
-	Pipeline(Texture2D skin, float speed,float distance,float minDistance);
+	Pipeline(Texture2D skin, float speed, float distance, float minDistance);
 	~Pipeline();
 	void update(Rectangle player);
 	void drawMe();
@@ -35,4 +37,5 @@ private:
 	void create();
 	bool iCanGivePoints;
 };
+}
 #endif
