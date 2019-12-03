@@ -40,9 +40,11 @@ private:
 	Texture2D creditsTexture;
 	Texture2D exitTexture;
 	Texture2D creditsScreenTexture;
+	Texture2D controlsTexture;
 	Music myMusicMenu;
 	Sound mySoundMenu;
 	Sound myGameLoss;
+	Music gameplayMusic;
 	const int distanceTitleTopY = 5;
 	const int distanceMenuLeftX = 7;
 	const int distanceMenuToMenu = 4;

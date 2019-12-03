@@ -19,6 +19,12 @@ Flappy_Bird::Flappy_Bird()
 	myMusicMenu = LoadMusicStream("assets/sound/Menu.ogg");
 	mySoundMenu = LoadSound("assets/sound/menuSelector.wav");
 	myGameLoss = LoadSound("assets/sound/LossSong.wav");
+	gameplayMusic = LoadMusicStream("assets/sound/musicGameplay.wav");
+	controlsTexture = LoadTexture("assets/controls.png");
+	controlsTexture.width = GetScreenWidth();
+	controlsTexture.height = GetScreenHeight();
+	controlsTexture.width /= 4;
+	controlsTexture.height /= 4;
 	inGame = true;
 	gameStatus = MENU;
 	titleTexture = LoadTexture("assets/coolText/Title.png");
@@ -73,6 +79,9 @@ Flappy_Bird::~Flappy_Bird()
 	UnloadTexture(skinBackGround1);
 	UnloadTexture(skinBackGround2);
 	UnloadSound(mySoundMenu);
+	UnloadSound(myGameLoss);
+	UnloadMusicStream(gameplayMusic);
+	UnloadTexture(controlsTexture);
 	for (int i = 0; i < cantPipeline; i++)
 	{
 		if (pipe[i])delete pipe[i];
@@ -228,6 +237,8 @@ void Flappy_Bird::drawMenu()
 		aux -= distanceMenuToMenu + playTexture.height;
 		DrawTexture(playTexture, distanceMenuLeftX ,
 			aux, playColor);
+		DrawTexture(controlsTexture,GetScreenWidth() - controlsTexture.width,
+			GetScreenHeight() - controlsTexture.height, BLACK);
 	}
 }
 void Flappy_Bird::resetColorMenu()
@@ -248,6 +259,7 @@ void Flappy_Bird::initGame()
 		{
 			pipe[i]->init();
 		}
+		PlayMusicStream(gameplayMusic);
 		player->reset();
 	}
 }
@@ -257,6 +269,7 @@ void Flappy_Bird::updateGame()
 	{
 		if (!Pipeline::playerCollision)
 		{
+			UpdateMusicStream(gameplayMusic);
 			background->update();
 			player->input();
 			player->move();
@@ -282,6 +295,7 @@ void Flappy_Bird::updateGame()
 		else
 		{
 			gameStatus = SCORE;
+			StopMusicStream(gameplayMusic);
 			PlaySound(myGameLoss);
 		}
 
