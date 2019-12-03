@@ -19,7 +19,7 @@ Flappy_Bird::Flappy_Bird()
 	myMusicMenu = LoadMusicStream("assets/sound/Menu.ogg");
 	mySoundMenu = LoadSound("assets/sound/menuSelector.wav");
 	myGameLoss = LoadSound("assets/sound/LossSong.wav");
-	gameplayMusic = LoadMusicStream("assets/sound/musicGameplay.wav");
+	gameplayMusic = LoadMusicStream("assets/sound/musicGameplay.ogg");
 	controlsTexture = LoadTexture("assets/controls.png");
 	controlsTexture.width = GetScreenWidth();
 	controlsTexture.height = GetScreenHeight();
