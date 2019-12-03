@@ -11,6 +11,7 @@ const float Flappy_Bird::drawnCorrectionWidth = 12.0f;
 const float Flappy_Bird::drawnCorrectionHeight = 3.0f;
 const int Flappy_Bird::screenHeight = 600;
 const int Flappy_Bird::screenWidth = 1200;
+const float Flappy_Bird::modifyVolume = 0.1f;
 Flappy_Bird::Flappy_Bird()
 {
 	srand(unsigned(NULL));
@@ -105,10 +106,12 @@ void Flappy_Bird::update()
 	case MENU:
 		initMenu();
 		updateMenu();
+		updateOptions();
 		break;
 	case GAME:
 		initGame();
 		updateGame();
+		updateOptions();
 		break;
 	case CREDITS_SCREEN:
 		updateCredits();
@@ -318,9 +321,24 @@ void Flappy_Bird::drawGame()
 }
 void Flappy_Bird::updateOptions()
 {
-}
-void Flappy_Bird::drawOptions()
-{
+	if (IsKeyReleased(KEY_O))
+	{
+		volume -= modifyVolume;
+		if (volume > 1.0f)
+		{
+			volume = 1.0f;
+		}
+		SetMasterVolume(volume);
+	}
+	if (IsKeyReleased(KEY_P))
+	{
+		volume += modifyVolume;
+		if (volume < 0.001f)
+		{
+			volume = 0.000f;
+		}
+		SetMasterVolume(volume);
+	}
 }
 void Flappy_Bird::updateCredits()
 {

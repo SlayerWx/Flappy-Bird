@@ -14,7 +14,7 @@ enum MenuState
 {
 	PLAY,CREDITS,EXIT
 };
-static const int cantPipeline = 10;
+static const int cantPipeline = 20;
 class Flappy_Bird
 {
 public:
@@ -59,6 +59,8 @@ private:
 	static const float drawnCorrectionHeight;
 	static const int screenHeight;
 	static const int screenWidth;
+	float volume = 0.25f;
+	static const float modifyVolume;
 	MenuState myState;
 	void update();
 	void draw();
@@ -75,7 +77,6 @@ private:
 	void drawGame();
 
 	void updateOptions();
-	void drawOptions();
 
 	void updateCredits();
 	void drawCredits();
