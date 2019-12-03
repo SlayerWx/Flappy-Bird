@@ -82,5 +82,17 @@
     <Image Include="..\resource\assets\coolText\Title.png">
       <Filter>resource\assets\CoolText</Filter>
     </Image>
+    <Image Include="..\resource\assets\CreditsScreen.png">
+      <Filter>resource\assets</Filter>
+    </Image>
+    <Image Include="..\resource\assets\Pipeline.png">
+      <Filter>resource\assets</Filter>
+    </Image>
+    <Image Include="..\resource\assets\sky1Background.png">
+      <Filter>resource\assets</Filter>
+    </Image>
+    <Image Include="..\resource\assets\coolText\Credits.png">
+      <Filter>resource\assets\CoolText</Filter>
+    </Image>
   </ItemGroup>
 </Project>

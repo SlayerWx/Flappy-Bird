@@ -15,6 +15,10 @@ Flappy_Bird::Flappy_Bird()
 {
 	srand(unsigned(NULL));
 	InitWindow(800, 400, "Flappy Bird");
+	InitAudioDevice();
+	myMusicMenu = LoadMusicStream("assets/sound/Menu.ogg");
+	mySoundMenu = LoadSound("assets/sound/menuSelector.wav");
+	myGameLoss = LoadSound("assets/sound/LossSong.wav");
 	inGame = true;
 	gameStatus = MENU;
 	titleTexture = LoadTexture("assets/coolText/Title.png");
@@ -59,10 +63,22 @@ Flappy_Bird::~Flappy_Bird()
 {
 	if (player)delete player;
 	if (background)delete background;
+	UnloadTexture(titleTexture);
+	UnloadTexture(playTexture);
 	UnloadTexture(birdSkin);
+	UnloadTexture(exitTexture);
+	UnloadTexture(creditsTexture);
 	UnloadTexture(skinPipeline);
+	UnloadTexture(creditsScreenTexture);
 	UnloadTexture(skinBackGround1);
 	UnloadTexture(skinBackGround2);
+	UnloadSound(mySoundMenu);
+	for (int i = 0; i < cantPipeline; i++)
+	{
+		if (pipe[i])delete pipe[i];
+	}
+	UnloadMusicStream(myMusicMenu);
+	CloseAudioDevice();
 	CloseWindow();
 }
 void Flappy_Bird::Play()
@@ -97,7 +113,7 @@ void Flappy_Bird::update()
 void Flappy_Bird::draw()
 {
 	BeginDrawing();
-	ClearBackground(SKYBLUE);
+	ClearBackground(BLACK);
 	switch (gameStatus)
 	{
 	case MENU:
@@ -122,12 +138,14 @@ void Flappy_Bird::initMenu()
 		menuInited = true;
 		gameInited = false;
 		scoreInited = false;
+		PlayMusicStream(myMusicMenu);
 	}
 }
 void Flappy_Bird::updateMenu()
 {
 	if (menuInited)
 	{
+		UpdateMusicStream(myMusicMenu);
 		switch (myState)
 		{
 		case PLAY:
@@ -140,12 +158,14 @@ void Flappy_Bird::updateMenu()
 				myState = EXIT;
 				resetColorMenu();
 				exitColor = WHITE;
+				PlaySound(mySoundMenu);
 			}
 			if (IsKeyReleased(KEY_DOWN))
 			{
 				myState = CREDITS;
 				resetColorMenu();
 				creditsColor = WHITE;
+				PlaySound(mySoundMenu);
 			}
 			break;
 		case CREDITS:
@@ -158,12 +178,14 @@ void Flappy_Bird::updateMenu()
 				myState = PLAY;
 				resetColorMenu();
 				playColor = WHITE;
+				PlaySound(mySoundMenu);
 			}
 			if (IsKeyReleased(KEY_DOWN))
 			{
 				myState = EXIT;
 				resetColorMenu();
 				exitColor = WHITE;
+				PlaySound(mySoundMenu);
 			}
 			break;	
 		case EXIT:
@@ -176,12 +198,14 @@ void Flappy_Bird::updateMenu()
 				myState = CREDITS;
 				resetColorMenu();
 				creditsColor = WHITE;
+				PlaySound(mySoundMenu);
 			}
 			if (IsKeyReleased(KEY_DOWN))
 			{
 				myState = PLAY;
 				resetColorMenu();
 				playColor = WHITE;
+				PlaySound(mySoundMenu);
 			}
 			break;
 		}
@@ -219,10 +243,10 @@ void Flappy_Bird::initGame()
 		menuInited = false;
 		gameInited = true;
 		scoreInited = false;
+		StopMusicStream(myMusicMenu);
 		for (int i = 0; i < cantPipeline; i++)
 		{
 			pipe[i]->init();
-
 		}
 		player->reset();
 	}
@@ -258,6 +282,7 @@ void Flappy_Bird::updateGame()
 		else
 		{
 			gameStatus = SCORE;
+			PlaySound(myGameLoss);
 		}
 
 	}
@@ -273,7 +298,8 @@ void Flappy_Bird::drawGame()
 			pipe[i]->drawMe();
 		}
 		player->drawMe();
-
+		DrawText(TextFormat("%02i", player->getPoints()), (GetScreenWidth() / 2)
+				- correctionFontPosition, distanceTitleTopY, fontSizeScore, BLACK);
 	}
 }
 void Flappy_Bird::updateOptions()
@@ -284,6 +310,7 @@ void Flappy_Bird::drawOptions()
 }
 void Flappy_Bird::updateCredits()
 {
+	UpdateMusicStream(myMusicMenu);
 	if (IsKeyReleased(KEY_ENTER))
 	{
 		gameStatus = MENU;
@@ -318,6 +345,9 @@ void Flappy_Bird::drawScore()
 {
 	if (scoreInited)
 	{
-
+		DrawText(FormatText("Total Score: %02i", player->getPoints())
+			, (GetScreenWidth()/2) - correctionFontPosition * 3, (GetScreenHeight()/3) - correctionFontPosition * 2,fontSizeScore, WHITE);
+		DrawTexture(exitTexture, (GetScreenWidth() / 2) - correctionFontPosition * 2,
+			static_cast<int>((GetScreenHeight() - distanceTitleBackY * 2 - exitTexture.height)), WHITE);
 	}
 }

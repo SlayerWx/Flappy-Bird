@@ -34,11 +34,15 @@
     <ClInclude Include="..\src\Game Objects\Player.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\resource\assets\coolText\Credits.png" />
     <Image Include="..\resource\assets\coolText\Exit.png" />
     <Image Include="..\resource\assets\coolText\Play.png" />
     <Image Include="..\resource\assets\coolText\Title.png" />
+    <Image Include="..\resource\assets\CreditsScreen.png" />
     <Image Include="..\resource\assets\Kenney.nl\PNG\Planes\planeRed1.png" />
+    <Image Include="..\resource\assets\Pipeline.png" />
     <Image Include="..\resource\assets\sky1Background-1.png" />
+    <Image Include="..\resource\assets\sky1Background.png" />
     <Image Include="..\resource\assets\sky2Background.png" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

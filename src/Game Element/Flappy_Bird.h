@@ -40,11 +40,16 @@ private:
 	Texture2D creditsTexture;
 	Texture2D exitTexture;
 	Texture2D creditsScreenTexture;
+	Music myMusicMenu;
+	Sound mySoundMenu;
+	Sound myGameLoss;
 	const int distanceTitleTopY = 5;
 	const int distanceMenuLeftX = 7;
 	const int distanceMenuToMenu = 4;
 	const int distanceTitleBackY = 8;
 	const float sizeDecrease = 1.5f;
+	const int fontSizeScore = 30;
+	const int correctionFontPosition = 50;
 	Color playColor;
 	Color exitColor;
 	Color creditsColor;
