@@ -9,12 +9,12 @@
 using namespace std;
 const float Flappy_Bird::drawnCorrectionWidth = 12.0f;
 const float Flappy_Bird::drawnCorrectionHeight = 3.0f;
-const int Flappy_Bird::screenHeight = 400;
-const int Flappy_Bird::screenWidth = 800;
+const int Flappy_Bird::screenHeight = 600;
+const int Flappy_Bird::screenWidth = 1200;
 Flappy_Bird::Flappy_Bird()
 {
 	srand(unsigned(NULL));
-	InitWindow(800, 400, "Flappy Bird");
+	InitWindow(screenWidth, screenHeight, "Flappy Bird");
 	InitAudioDevice();
 	myMusicMenu = LoadMusicStream("assets/sound/Menu.ogg");
 	mySoundMenu = LoadSound("assets/sound/menuSelector.wav");
@@ -23,8 +23,8 @@ Flappy_Bird::Flappy_Bird()
 	controlsTexture = LoadTexture("assets/controls.png");
 	controlsTexture.width = GetScreenWidth();
 	controlsTexture.height = GetScreenHeight();
-	controlsTexture.width /= 4;
-	controlsTexture.height /= 4;
+	controlsTexture.width /= 2;
+	controlsTexture.height /= 3;
 	inGame = true;
 	gameStatus = MENU;
 	titleTexture = LoadTexture("assets/coolText/Title.png");

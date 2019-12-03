@@ -5,9 +5,9 @@
 #include "raylib.h"
 #include "Game Objects/Player.h"
 static const int minDistanceBetweenPipes = 90;
-static const int maxDistanceBetweenPipes = 120;
+static const int maxDistanceBetweenPipes = 180;
 static const int minPosY = 30;
-static const int maxPosY = 90;
+static const int maxPosY = 180;
 class Pipeline
 {
 public:
