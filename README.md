@@ -13,6 +13,8 @@ Visual studio
 
 beepbox.com
 
+Gimp 2
+
 https://patrickdearteaga.com/es/musica-libre-derechos-gratis/childs-nightmare/
 
 Kenney.nl
